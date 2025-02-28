@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas Dinâmica</title>
+    <style>
+        /* Mesmo estilo do exemplo anterior */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .todo-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .todo-item {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .todo-item:last-child {
+            border-bottom: none;
+        }
+        .todo-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Minha Lista de Tarefas Dinâmica</h1>
+
+<input type="text" id="novaTarefa" placeholder="Nova tarefa">
+<button onclick="adicionarTarefa()">Adicionar</button>
+
+<ul class="todo-list" id="listaTarefas">
+    <!-- Tarefas serão adicionadas aqui -->
+</ul>
+
+<script>
+    function adicionarTarefa() {
+        const novaTarefa = document.getElementById('novaTarefa').value;
+        if (novaTarefa !== '') {
+            const lista = document.getElementById('listaTarefas');
+            const item = document.createElement('li');
+            item.className = 'todo-item';
+            item.innerHTML = `
+                <input type="checkbox" id="tarefa${lista.children.length + 1}">
+                <label for="tarefa${lista.children.length + 1}">${novaTarefa}</label>
+            `;
+            lista.appendChild(item);
+            document.getElementById('novaTarefa').value = ''; // Limpa o campo de texto
+        }
+    }
+</script>
+
+</body>
+</html>
